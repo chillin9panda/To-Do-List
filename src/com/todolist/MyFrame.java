@@ -13,6 +13,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.ButtonGroup;
 
 class MyFrame extends JFrame {
 	MyFrame(BorderLayout layout) {
@@ -30,8 +32,24 @@ class MyFrame extends JFrame {
 		JMenu search = new JMenu("Search");
 		JMenu sort = new JMenu("Sort");
 
-		JMenuItem menuItem = new JMenuItem();
+		menuBar.setBackground(midNightBlue);
+		addTask.setForeground(Color.WHITE);
+		search.setForeground(Color.WHITE);
+		sort.setForeground(Color.WHITE);
 
+		// Sort menu
+		JRadioButtonMenuItem sortByName = new JRadioButtonMenuItem("By Name");
+		JRadioButtonMenuItem sortByDateAdded = new JRadioButtonMenuItem("By Date Added");
+
+		ButtonGroup sortGroup = new ButtonGroup();
+
+		sortGroup.add(sortByName);
+		sortGroup.add(sortByDateAdded);
+
+		sort.add(sortByName);
+		sort.add(sortByDateAdded);
+
+		// Add menu to menubar
 		menuBar.add(addTask);
 		menuBar.add(search);
 		menuBar.add(sort);
