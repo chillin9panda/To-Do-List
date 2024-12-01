@@ -15,16 +15,21 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.ButtonGroup;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 class MyFrame extends JFrame {
+	// Color definition
+	static Color midNightBlue = new Color(24, 25, 38);
+
 	MyFrame(BorderLayout layout) {
 		super("To-Do-List");
 
+		Tasks tasks = new Tasks();
+
 		ImageIcon logo = new ImageIcon("media/logo.png");
 		this.setIconImage(logo.getImage());
-
-		// Color definition
-		Color midNightBlue = new Color(24, 25, 38);
 
 		// Menu Bar
 		JMenuBar menuBar = new JMenuBar();
@@ -36,6 +41,14 @@ class MyFrame extends JFrame {
 		addTask.setForeground(Color.WHITE);
 		search.setForeground(Color.WHITE);
 		sort.setForeground(Color.WHITE);
+
+		// New Task
+		addTask.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				tasks.addTasks();
+			}
+		});
 
 		// Sort menu
 		JRadioButtonMenuItem sortByName = new JRadioButtonMenuItem("By Name");
